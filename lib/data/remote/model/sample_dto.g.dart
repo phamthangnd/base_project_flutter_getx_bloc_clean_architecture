@@ -13,8 +13,9 @@ SampleQuotableDTO _$SampleQuotableDTOFromJson(Map<String, dynamic> json) {
     page: json['page'] as int?,
     totalPages: json['totalPages'] as int?,
     results: (json['results'] as List<dynamic>?)
-        ?.map(
-            (e) => SampleQuotableDTOResults.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : SampleQuotableDTOResults.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
 }

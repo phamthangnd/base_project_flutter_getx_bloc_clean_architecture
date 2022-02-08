@@ -58,12 +58,12 @@ class LanguagePickerWidget extends StatelessWidget {
       items:langs.map((String locale) {
         return DropdownMenuItem<String>(value: locale, child: Text(locale));
       }).toList(),
-      /* onChanged: (String value) {
+      onChanged: (String? value) {
         // updates dropdown selected value
-        setState(() => _selectedLang = value);
+        // setState(() => _selectedLang = value);
         // gets language and changes the locale
-        LocalizationService().changeLocale(value);
-      },*/
+        // LocalizationService().changeLocale(value);
+      },
     ));
   }
 }

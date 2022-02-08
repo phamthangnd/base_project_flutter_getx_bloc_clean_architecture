@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:project/core/utils/input_type_utils.dart';
+import 'package:project/presentation/ui/config/route_config.dart';
 import 'package:project/presentation/ui/config/ui_config.dart';
 import 'package:project/presentation/ui/pages/0_example_page/example_page.dart';
+import 'package:project/presentation/ui/pages/language/language_view.dart';
 
 import 'login_controller.dart';
 import 'login_state.dart';
@@ -96,11 +98,11 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: () {
                     UIConfig.hideKeyboard(context: context);
                     //controller.getUserByMobileNo(tecMobileNo.text, tecPassword.text);
-                    Get.offAllNamed(ExamplePage.route);
+                    Get.offAllNamed(RouteConfig.home);
                   }),
             )
           ])),
-          //Container(alignment: Alignment.center, child: LanguagePage()),
+          Container(alignment: Alignment.center, child: LanguagePage()),
         ],
       )),
     );

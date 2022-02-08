@@ -93,7 +93,7 @@ class LocalNotificationUtils {
     const AndroidNotificationChannel channel = AndroidNotificationChannel(
       'high_importance_channel', // id
       'High Importance Notifi', // title
-      'This channel is used for important notifications.', // description
+      description: 'This channel is used for important notifications.', // description
       importance: Importance.high,
     );
 
@@ -130,7 +130,8 @@ class LocalNotificationUtils {
     if (!Foundation.kIsWeb && notificationID != null && model != null) {
       Print("Local Notification Called");
 
-      AndroidNotificationDetails androidDetails = AndroidNotificationDetails(channelId, channelName, channelDescription,
+      AndroidNotificationDetails androidDetails = AndroidNotificationDetails(channelId, channelName,
+          channelDescription: channelDescription,
           importance: Importance.max,
           priority: Priority.high,
           setAsGroupSummary: true,

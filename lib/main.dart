@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:project/core/di/injection_container.dart';
 import 'package:project/core/utils/print_utils.dart';
 import 'package:project/data/local/repository/locale_repository.dart';
 import 'package:project/presentation/ui/config/route_config.dart';
@@ -17,6 +18,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  init();
   DIContainer.initDI();
   runApp(MyApp());
 }
