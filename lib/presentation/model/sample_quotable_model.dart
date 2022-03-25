@@ -5,9 +5,9 @@ class SampleQuotableModel {
   final int? totalPages;
   final List<SampleQuotableModelResults?>? results;
 
-  SampleQuotableModel({this.count, this.totalCount, this.page, this.totalPages, this.results});
+  SampleQuotableModel(
+      {this.count, this.totalCount, this.page, this.totalPages, this.results});
 }
-
 
 class SampleQuotableModelResults {
   final String? id;
@@ -18,5 +18,13 @@ class SampleQuotableModelResults {
   final String? dateAdded;
   final String? dateModified;
 
-  SampleQuotableModelResults({this.id, this.author, this.content, this.authorSlug, this.length, this.dateAdded, this.dateModified});
+  SampleQuotableModelResults({
+    this.id,
+    this.author,
+    this.content,
+    this.authorSlug,
+    this.length,
+    this.dateAdded,
+    this.dateModified,
+  });
 }

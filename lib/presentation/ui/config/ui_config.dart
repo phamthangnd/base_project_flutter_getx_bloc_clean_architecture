@@ -6,27 +6,38 @@ import 'package:project/presentation/res/colors/app_colors/app_colors.dart';
 
 /// get customised widgets
 class UIConfig {
-  static Color? iconColor =  AppColors.get()?.ICON_COLOR != null ? AppColors.get()?.ICON_COLOR! : Colors.grey;
-  static Color? buttonColor = AppColors.get()?.BUTTON_COLOR != null ? AppColors.get()?.BUTTON_COLOR : Colors.black54;
-  static Color? buttonTextColor =  AppColors.get()?.BUTTON_TEXT_COLOR != null ? AppColors.get()?.BUTTON_TEXT_COLOR : Colors.white;
-  static Color? primaryColor = AppColors.get()?.PRIMARY_COLOR != null ? AppColors.get()?.PRIMARY_COLOR : Colors.blue;
-  static Color? accentColor =  AppColors.get()?.ACCENT_COLOR != null ? AppColors.get()?.ACCENT_COLOR : Colors.blueGrey;
+  static Color? iconColor = AppColors.get()?.ICON_COLOR != null
+      ? AppColors.get()?.ICON_COLOR!
+      : Colors.grey;
+  static Color? buttonColor = AppColors.get()?.BUTTON_COLOR != null
+      ? AppColors.get()?.BUTTON_COLOR
+      : Colors.black54;
+  static Color? buttonTextColor = AppColors.get()?.BUTTON_TEXT_COLOR != null
+      ? AppColors.get()?.BUTTON_TEXT_COLOR
+      : Colors.white;
+  static Color? primaryColor = AppColors.get()?.PRIMARY_COLOR != null
+      ? AppColors.get()?.PRIMARY_COLOR
+      : Colors.blue;
+  static Color? accentColor = AppColors.get()?.ACCENT_COLOR != null
+      ? AppColors.get()?.ACCENT_COLOR
+      : Colors.blueGrey;
+
   /// get customised Theme data
   static ThemeData themeData() {
-
     return ThemeData(
-        //brightness: Brightness.dark,
-        primaryColor: primaryColor,
-        accentColor: accentColor,
-        fontFamily: 'Ubuntu',
-        /*textTheme: TextTheme(
+      // brightness: Brightness.dark,
+      primaryColor: primaryColor,
+      accentColor: accentColor,
+      fontFamily: 'Ubuntu',
+      /*textTheme: TextTheme(
           bodyText1: TextStyle(),
           bodyText2: TextStyle(),
           headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
           headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
         ).apply(),
-        iconTheme: IconThemeData(color: Colors.white),
-        scaffoldBackgroundColor: Colors.white*/);
+        iconTheme: IconThemeData(color: Colors.white),*/
+      // scaffoldBackgroundColor: Colors.white,
+    );
   }
 
   static Scaffold scaffold({AppBar? appBar, required Widget body}) {
@@ -100,7 +111,8 @@ class UIConfig {
       FocusNode? focusNode,
       FocusNode? requestFocusNode,
       TextInputAction? textInputAction = TextInputAction.done}) {
-    TextEditingController tec = textEditingController ?? TextEditingController();
+    TextEditingController tec =
+        textEditingController ?? TextEditingController();
     FocusNode fn = focusNode ?? FocusNode();
     FocusNode rfn = requestFocusNode ?? FocusNode();
     return Column(
@@ -110,7 +122,13 @@ class UIConfig {
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: titleTextStyle == null ? TextStyle(color: titleColor, fontSize: titleSize, fontWeight: FontWeight.bold) : titleTextStyle),
+                  Text(title,
+                      style: titleTextStyle == null
+                          ? TextStyle(
+                              color: titleColor,
+                              fontSize: titleSize,
+                              fontWeight: FontWeight.bold)
+                          : titleTextStyle),
                   SizedBox(height: 5),
                 ],
               )
@@ -120,12 +138,14 @@ class UIConfig {
           focusNode: fn,
           obscureText: obscureText,
           obscuringCharacter: obscuringCharacter,
-          buildCounter: (context, {required currentLength, required isFocused, maxLength}) {
+          buildCounter: (context,
+              {required currentLength, required isFocused, maxLength}) {
             return isCounterTextEnabled
                 ? Container(
                     padding: EdgeInsets.only(left: 5, right: 5),
                     alignment: Alignment.centerRight,
-                    child: Text(currentLength.toString() + "/" + maxLength.toString()))
+                    child: Text(
+                        currentLength.toString() + "/" + maxLength.toString()))
                 : Container();
           },
           maxLength: length,
@@ -153,7 +173,9 @@ class UIConfig {
           keyboardType: InputTypeUtils.getTextInputType(inputType),
           inputFormatters: InputTypeUtils.getTextInputFormatter(inputType),
           enabled: isEditable,
-          style: textStyle == null ? TextStyle(color: textColor, fontSize: textSize) : textStyle,
+          style: textStyle == null
+              ? TextStyle(color: textColor, fontSize: textSize)
+              : textStyle,
           decoration: InputDecoration(
             contentPadding: textFieldContentPadding,
             border: OutlineInputBorder(
@@ -194,8 +216,12 @@ class UIConfig {
             ),
             hintText: hintText,
             labelText: labelText,
-            hintStyle: hintTextStyle == null ? TextStyle(color: hintTextColor) : hintTextStyle,
-            labelStyle: labelTextStyle == null ? TextStyle(color: labelTextColor) : labelTextStyle,
+            hintStyle: hintTextStyle == null
+                ? TextStyle(color: hintTextColor)
+                : hintTextStyle,
+            labelStyle: labelTextStyle == null
+                ? TextStyle(color: labelTextColor)
+                : labelTextStyle,
             fillColor: fillColor,
             filled: isColorFilled,
             prefixIcon: prefixIcon == null ? SizedBox() : prefixIcon,
@@ -223,10 +249,10 @@ class UIConfig {
       bool isMatchParent = false,
       Color? fillColor = Colors.white,
       Color? borderColor,
-      Color? textColor = Colors.grey,
+      Color? textColor = Colors.white,
       double? fontSize,
       double borderRadius = 0,
-      EdgeInsetsGeometry padding = const EdgeInsets.all(5),
+      EdgeInsetsGeometry padding = const EdgeInsets.all(16),
       EdgeInsetsGeometry margin = const EdgeInsets.all(0),
       required Function() onTap,
       TextAlign textAlign = TextAlign.start}) {
@@ -234,27 +260,26 @@ class UIConfig {
       margin: margin,
       height: height,
       width: width,
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
+      child: ElevatedButton(
+        onPressed: onTap,
+        style: ElevatedButton.styleFrom(
+          primary: Theme.of(context).primaryColor,
           padding: padding,
+        ),
+        child: Container(
           child: Text(
             title,
             textAlign: textAlign,
             style: TextStyle(color: textColor, fontSize: fontSize),
           ),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: fillColor,
-            border: borderColor != null ? Border.all(color: borderColor) : null,
-            borderRadius: BorderRadius.circular(borderRadius),
-          ),
+
         ),
       ),
     );
   }
 
-  static void hideKeyboard({required BuildContext context, Function? setState}) {
+  static void hideKeyboard(
+      {required BuildContext context, Function? setState}) {
     if (setState != null) {
       setState(() {
         FocusScope.of(context).requestFocus(FocusNode());

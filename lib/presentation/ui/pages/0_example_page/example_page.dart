@@ -16,7 +16,9 @@ class ExamplePage extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(10),
           margin: EdgeInsets.all(10),
-          child: Column(children: [
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
             ElevatedButton(
                 onPressed: () {
                   Get.toNamed(GetXamplePage.route);

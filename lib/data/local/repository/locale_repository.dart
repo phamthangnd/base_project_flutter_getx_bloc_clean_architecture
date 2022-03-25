@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart' as Foundation;
 import 'dart:io';
 
 abstract class LocaleRepository {
-  Future<bool> saveLanguageCodeToLocal({String languageCode = "en"});
+  Future<bool> saveLanguageCodeToLocal({String languageCode = "vi"});
 
   Future<String?> getLanguageCodeFromLocal();
 
@@ -15,7 +15,7 @@ class LocaleRepositoryImpl implements LocaleRepository {
   final String KEY = 'locale_key';
 
   @override
-  Future<bool> saveLanguageCodeToLocal({String languageCode = "en"}) async {
+  Future<bool> saveLanguageCodeToLocal({String languageCode = "vi"}) async {
     if (!Foundation.kIsWeb && (Platform.isIOS || Platform.isAndroid)) {
       try {
         SharedPreferences prefs = await SharedPreferences.getInstance();

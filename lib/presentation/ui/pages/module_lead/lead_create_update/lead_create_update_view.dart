@@ -42,7 +42,10 @@ class _LeadCreateUpdatePageState extends State<LeadCreateUpdatePage> {
       leadCreateEditDTO = LeadCreateEditDTO();
     }
 
-    return Scaffold(appBar: AppBar(title: Text(isFromEdit ? "Edit Lead" : "Create Lead")), body: _obxContent(context));
+    return Scaffold(
+      appBar: AppBar(title: Text(isFromEdit ? "Edit Lead" : "Create Lead")),
+      body: _obxContent(context),
+    );
   }
 
   void updateUI() {
@@ -50,8 +53,11 @@ class _LeadCreateUpdatePageState extends State<LeadCreateUpdatePage> {
     tecContactedDetails.text = leadCreateEditDTO?.contactedDetails ?? "";
     tecContactNumber.text = leadCreateEditDTO?.contactNo ?? "";
     tecPlace.text = leadCreateEditDTO?.place ?? "";
-    tecPrice.text = leadCreateEditDTO?.price != null ? "${leadCreateEditDTO?.price}" : "";
-    tecQuantity.text = leadCreateEditDTO?.quantity != null ? "${leadCreateEditDTO?.quantity}" : "";
+    tecPrice.text =
+        leadCreateEditDTO?.price != null ? "${leadCreateEditDTO?.price}" : "";
+    tecQuantity.text = leadCreateEditDTO?.quantity != null
+        ? "${leadCreateEditDTO?.quantity}"
+        : "";
     tecDescription.text = leadCreateEditDTO?.description ?? "";
   }
 
@@ -60,14 +66,19 @@ class _LeadCreateUpdatePageState extends State<LeadCreateUpdatePage> {
     leadCreateEditDTO?.contactedDetails = tecContactedDetails.text;
     leadCreateEditDTO?.contactNo = tecContactNumber.text;
     leadCreateEditDTO?.place = tecPlace.text;
-    leadCreateEditDTO?.price = !ValidationUtils.isEmpty(tecPrice.text) ? double.tryParse(tecPrice.text) : 0;
-    leadCreateEditDTO?.quantity = !ValidationUtils.isEmpty(tecQuantity.text) ? int.tryParse(tecQuantity.text) : 0;
+    leadCreateEditDTO?.price = !ValidationUtils.isEmpty(tecPrice.text)
+        ? double.tryParse(tecPrice.text)
+        : 0;
+    leadCreateEditDTO?.quantity = !ValidationUtils.isEmpty(tecQuantity.text)
+        ? int.tryParse(tecQuantity.text)
+        : 0;
     leadCreateEditDTO?.description = tecDescription.text;
   }
 
   Widget _obxContent(BuildContext context) {
     return Obx(() {
-      if (controller.listLeadProductsDTODMapper.length > 0 && controller.listLeadContactedViaDTODMapper.length > 0) {
+      if (controller.listLeadProductsDTODMapper.length > 0 &&
+          controller.listLeadContactedViaDTODMapper.length > 0) {
         updateUI();
         return _content(context);
       } else {
@@ -89,7 +100,8 @@ class _LeadCreateUpdatePageState extends State<LeadCreateUpdatePage> {
             inputType: INPUT_TYPE.ALPHA_WITH_SPACE),
         SizedBox(height: 10),
         DropDownView<LeadContactedViaDTO>(
-            dropViewSelectionIdType: DropViewSelectionIdType.SELECTION_BASED_ON_ID_STRING,
+            dropViewSelectionIdType:
+                DropViewSelectionIdType.SELECTION_BASED_ON_ID_STRING,
             dropViewSelectionType: DropViewSelectionType.SELECTION_BASED_ON_ID,
             selectedIdString: leadCreateEditDTO?.contactedVia ?? "",
             enable: isFromEdit ? false : true,
@@ -97,7 +109,9 @@ class _LeadCreateUpdatePageState extends State<LeadCreateUpdatePage> {
             hint: "Choose Contacted Via",
             items: controller.listLeadContactedViaDTODMapper.value,
             onItemSelected: (DMapper<LeadContactedViaDTO?>? mapper) {
-              if (mapper != null && mapper.object != null && mapper.object?.name != null) {
+              if (mapper != null &&
+                  mapper.object != null &&
+                  mapper.object?.name != null) {
                 leadCreateEditDTO?.contactedVia = mapper.object?.name;
               }
             }),
@@ -110,12 +124,21 @@ class _LeadCreateUpdatePageState extends State<LeadCreateUpdatePage> {
             inputType: INPUT_TYPE.ALPHA_WITH_SPACE),
         SizedBox(height: 10),
         UIConfig.textFieldLabel(
-            textEditingController: tecContactNumber, title: "Contact Number", hintText: "Enter Contact Number", inputType: INPUT_TYPE.NUMERIC_INT, length: 10),
+            textEditingController: tecContactNumber,
+            title: "Contact Number",
+            hintText: "Enter Contact Number",
+            inputType: INPUT_TYPE.NUMERIC_INT,
+            length: 10),
         SizedBox(height: 10),
-        UIConfig.textFieldLabel(textEditingController: tecPlace, title: "Place", hintText: "Enter Place", inputType: INPUT_TYPE.ALPHA_WITH_SPACE),
+        UIConfig.textFieldLabel(
+            textEditingController: tecPlace,
+            title: "Place",
+            hintText: "Enter Place",
+            inputType: INPUT_TYPE.ALPHA_WITH_SPACE),
         SizedBox(height: 10),
         DropDownView<LeadProductsDTO>(
-            dropViewSelectionIdType: DropViewSelectionIdType.SELECTION_BASED_ON_ID_STRING,
+            dropViewSelectionIdType:
+                DropViewSelectionIdType.SELECTION_BASED_ON_ID_STRING,
             dropViewSelectionType: DropViewSelectionType.SELECTION_BASED_ON_ID,
             selectedIdString: leadCreateEditDTO?.productName ?? "",
             enable: isFromEdit ? false : true,
@@ -123,18 +146,32 @@ class _LeadCreateUpdatePageState extends State<LeadCreateUpdatePage> {
             hint: "Choose Products",
             items: controller.listLeadProductsDTODMapper.value,
             onItemSelected: (DMapper<LeadProductsDTO?>? mapper) {
-              if (mapper != null && mapper.object != null && mapper.object?.name != null && mapper.object?.productId != null) {
+              if (mapper != null &&
+                  mapper.object != null &&
+                  mapper.object?.name != null &&
+                  mapper.object?.productId != null) {
                 leadCreateEditDTO?.productId = mapper.object?.productId;
                 leadCreateEditDTO?.productName = mapper.object?.name;
               }
             }),
         SizedBox(height: 10),
-        UIConfig.textFieldLabel(textEditingController: tecPrice, title: "Price", hintText: "Enter Price", inputType: INPUT_TYPE.NUMERIC_FLOAT),
-        SizedBox(height: 10),
-        UIConfig.textFieldLabel(textEditingController: tecQuantity, title: "Quantity", hintText: "Enter Quantity", inputType: INPUT_TYPE.NUMERIC_INT),
+        UIConfig.textFieldLabel(
+            textEditingController: tecPrice,
+            title: "Price",
+            hintText: "Enter Price",
+            inputType: INPUT_TYPE.NUMERIC_FLOAT),
         SizedBox(height: 10),
         UIConfig.textFieldLabel(
-            textEditingController: tecDescription, title: "Description", hintText: "Enter Description", inputType: INPUT_TYPE.ALPHA_WITH_SPACE),
+            textEditingController: tecQuantity,
+            title: "Quantity",
+            hintText: "Enter Quantity",
+            inputType: INPUT_TYPE.NUMERIC_INT),
+        SizedBox(height: 10),
+        UIConfig.textFieldLabel(
+            textEditingController: tecDescription,
+            title: "Description",
+            hintText: "Enter Description",
+            inputType: INPUT_TYPE.ALPHA_WITH_SPACE),
         SizedBox(height: 10),
         Container(
           alignment: Alignment.center,

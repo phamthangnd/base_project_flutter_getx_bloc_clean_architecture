@@ -20,7 +20,7 @@ class AppMainController extends GetxController {
   @override
   void onReady() async {
     String? languageCode = await Get.find<LocaleRepositoryImpl>().getLanguageCodeFromLocal();
-    Get.updateLocale(languageCode == null ? Locale("en"): Locale(languageCode));
+    Get.updateLocale(languageCode == null ? Locale("vi"): Locale(languageCode));
 
     LoginDetailsLocalRepository? loginDetailsLocalRepository = Get.find<LoginDetailsLocalRepositoryImpl>();
     LoginDetailsDTO? loginDetailsDTO = await loginDetailsLocalRepository.getLoginDetailsFromLocal();

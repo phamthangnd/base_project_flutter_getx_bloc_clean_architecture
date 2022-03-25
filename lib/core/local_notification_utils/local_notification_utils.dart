@@ -130,8 +130,7 @@ class LocalNotificationUtils {
     if (!Foundation.kIsWeb && notificationID != null && model != null) {
       Print("Local Notification Called");
 
-      AndroidNotificationDetails androidDetails = AndroidNotificationDetails(channelId, channelName,
-          channelDescription: channelDescription,
+      AndroidNotificationDetails androidDetails = AndroidNotificationDetails(channelId, channelName, channelDescription: channelDescription,
           importance: Importance.max,
           priority: Priority.high,
           setAsGroupSummary: true,

@@ -32,15 +32,17 @@ class _BlocExamplePageState extends State<BlocExamplePage> {
         return Container(
           padding: EdgeInsets.all(10),
           margin: EdgeInsets.all(10),
-          child: Column(children: [
-            Text("Increment value: ${count != null ? count : 0}"),
-            ElevatedButton(
-                onPressed: () {
-                  _addEvent(IncrementEvent());
-                },
-                child: Text("[increment]", style: TextStyle(fontSize: 20))),
+          child: Center(
+            child: Column(children: [
+              Text("Increment value: ${count != null ? count : 0}"),
+              ElevatedButton(
+                  onPressed: () {
+                    _addEvent(IncrementEvent());
+                  },
+                  child: Text("[increment]", style: TextStyle(fontSize: 20))),
 
-          ]),
+            ]),
+          ),
         );
       }),
       ),

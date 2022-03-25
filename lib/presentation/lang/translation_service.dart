@@ -1,45 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'vi.dart';
 import 'en.dart';
-import 'ta.dart';
+
 
 class TranslationService extends Translations {
-  static Locale? get deviceLocale => Locale(Get.deviceLocale?.languageCode ?? "en");
+  static Locale? get deviceLocale => //Locale('vi', 'VN');
+      Locale(Get.deviceLocale?.languageCode ?? "vi");
 
   static String getLanguage(String code) {
     switch (code) {
-      case 'ta':
-        return 'தமிழ்';
-      case 'hi':
-        return 'हिंदी';
-      case 'te':
-        return 'తెలుగు';
-      case 'kn':
-        return 'ಕನ್ನಡ';
-      case 'ml':
-        return 'മലയാളം';
       case 'en':
-      default:
         return 'English';
+      case 'vi':
+      default:
+        return 'Tiếng Viêt';
     }
   }
 
-  static List<Locale> supportedLocales = [Locale("en"), Locale("ta")];
-  static final fallbackLocale = Locale("en");
+  static List<Locale> supportedLocales = [
+    Locale("vi"),
+    Locale("en"),
+  ];
+  static final fallbackLocale = Locale("vi");
 
   static List<String> listLanguageCodes() {
     List<String> list = [];
     for (Locale locale in supportedLocales) {
       list.add(locale.languageCode);
     }
-
     return list;
   }
 
   @override
   Map<String, Map<String, String>> get keys => {
+        "vi": vietnamese,
         "en": english,
-        "ta": tamil,
       };
 }

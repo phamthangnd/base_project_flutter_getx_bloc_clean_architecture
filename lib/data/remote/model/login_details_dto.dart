@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 part 'login_details_dto.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class LoginDetailsDTO {
   @JsonKey(name: "UserId")
   int? userId;
@@ -18,12 +18,13 @@ class LoginDetailsDTO {
 
   LoginDetailsDTO(
       {this.userId,
-        this.userName,
-        this.password,
-        this.mobileNo,
-        this.department});
+      this.userName,
+      this.password,
+      this.mobileNo,
+      this.department});
 
-  factory LoginDetailsDTO.fromJson(Map<String, dynamic> json) => _$LoginDetailsDTOFromJson(json);
+  factory LoginDetailsDTO.fromJson(Map<String, dynamic> json) =>
+      _$LoginDetailsDTOFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginDetailsDTOToJson(this);
 
@@ -31,8 +32,6 @@ class LoginDetailsDTO {
       LoginDetailsDTO.fromJson(json.decode(str) as Map<String, dynamic>);
 
   String toRawJson() => json.encode(toJson());
-
-
 }
 
 @JsonSerializable()
@@ -42,14 +41,14 @@ class LoginDetailsDepartmentDTO {
 
   LoginDetailsDepartmentDTO({this.name});
 
-  factory LoginDetailsDepartmentDTO.fromJson(Map<String, dynamic> json) => _$LoginDetailsDepartmentDTOFromJson(json);
+  factory LoginDetailsDepartmentDTO.fromJson(Map<String, dynamic> json) =>
+      _$LoginDetailsDepartmentDTOFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginDetailsDepartmentDTOToJson(this);
 
   factory LoginDetailsDepartmentDTO.fromRawJson(String str) =>
-      LoginDetailsDepartmentDTO.fromJson(json.decode(str) as Map<String, dynamic>);
+      LoginDetailsDepartmentDTO.fromJson(
+          json.decode(str) as Map<String, dynamic>);
 
   String toRawJson() => json.encode(toJson());
-
-
 }

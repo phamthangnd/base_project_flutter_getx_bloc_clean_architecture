@@ -42,15 +42,15 @@ class _LeadListPageState extends State<LeadListPage> {
   }
 
   Widget _content(BuildContext context) {
-    /*return Column(
+    return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(child: listView()),
-        //UIConfig.button(context: context, title: "Create Lead", onTap: () {})
+        UIConfig.button(context: context, title: "Create Lead", onTap: () {})
       ],
-    );*/
+    );
 
-    return listView();
+    // return listView();
   }
 
   Widget listView() {

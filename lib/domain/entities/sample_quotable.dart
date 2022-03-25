@@ -5,9 +5,9 @@ class SampleQuotable {
   final int? totalPages;
   final List<SampleQuotableResults?>? results;
 
-  SampleQuotable({this.count, this.totalCount, this.page, this.totalPages, this.results});
+  SampleQuotable(
+      {this.count, this.totalCount, this.page, this.totalPages, this.results});
 }
-
 
 class SampleQuotableResults {
   final String? id;
@@ -18,5 +18,13 @@ class SampleQuotableResults {
   final String? dateAdded;
   final String? dateModified;
 
-  SampleQuotableResults({this.id, this.author, this.content, this.authorSlug, this.length, this.dateAdded, this.dateModified});
+  SampleQuotableResults({
+    this.id,
+    this.author,
+    this.content,
+    this.authorSlug,
+    this.length,
+    this.dateAdded,
+    this.dateModified,
+  });
 }

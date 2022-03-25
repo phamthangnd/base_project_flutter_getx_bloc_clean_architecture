@@ -32,8 +32,7 @@ class FilePickerUtils {
       bool allowMultiple = type == TYPE.PICK_FILES ? true : false;
       FilePickerResult? result;
       if (fileType == FileType.custom && customExtensions.isNotEmpty) {
-        result = await FilePicker.platform
-            .pickFiles(type: fileType, allowCompression: allowCompression, allowMultiple: allowMultiple, allowedExtensions: customExtensions);
+        result = await FilePicker.platform.pickFiles(type: fileType, allowCompression: allowCompression, allowMultiple: allowMultiple, allowedExtensions: customExtensions);
       } else {
         result = await FilePicker.platform.pickFiles(type: fileType, allowCompression: allowCompression, allowMultiple: allowMultiple);
       }
@@ -79,8 +78,7 @@ class FilePickerUtils {
             xFiles.add(xFile);
           }
         } else {
-          XFile? xFile =
-              await imagePicker.pickImage(source: ImageSource.camera, preferredCameraDevice: preferredCameraDevice, imageQuality: imageQuality);
+          XFile? xFile = await imagePicker.pickImage(source: ImageSource.camera, preferredCameraDevice: preferredCameraDevice, imageQuality: imageQuality);
           if (xFile != null) {
             xFiles = [];
             xFiles.add(xFile);
@@ -88,8 +86,7 @@ class FilePickerUtils {
         }
       } else if (type == TYPE.VIDEO) {
         if (maxDuration != null && maxDuration.inSeconds > 0) {
-          XFile? xFile =
-              await imagePicker.pickVideo(source: ImageSource.camera, preferredCameraDevice: preferredCameraDevice, maxDuration: maxDuration);
+          XFile? xFile = await imagePicker.pickVideo(source: ImageSource.camera, preferredCameraDevice: preferredCameraDevice, maxDuration: maxDuration);
           if (xFile != null) {
             xFiles = [];
             xFiles.add(xFile);
